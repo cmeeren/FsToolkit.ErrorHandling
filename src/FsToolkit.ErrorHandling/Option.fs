@@ -3,6 +3,16 @@ namespace FsToolkit.ErrorHandling
 [<RequireQualifiedAccess>]
 module Option =
 
+  let ofValueOption(vopt : ValueOption<_>) =
+    match vopt with
+    | ValueSome v-> Some v
+    | ValueNone -> None
+
+  let toValueOption(vopt : Option<_>) =
+    match vopt with
+    | Some v-> ValueSome v
+    | None -> ValueNone
+
   let traverseResult f opt =
     match opt with
     | None -> Ok None
